@@ -1,0 +1,14 @@
+#spring.application.name=zwz-demo-service
+##spring.main.allow-bean-definition-overriding=true
+##spring.main.allow-circular-references=true
+#spring.cloud.nacos.discovery.enabled= true
+#spring.cloud.nacos.discovery.namespace=dev
+#spring.cloud.nacos.discovery.server-addr=localhost:3337
+#spring.cloud.nacos.discovery.group=DEFAULT_GROUP
+#spring.cloud.nacos.config.server-addr=localhost:3337
+#spring.cloud.nacos.config.namespace=dev
+#spring.cloud.nacos.config.group=DEFAULT_GROUP
+##spring.cloud.nacos.config.file-extension=yaml
+#server.port=3336
+#spring.config.import=optional:nacos:${spring.application.name}.yaml
+#spring.profiles.active=dev

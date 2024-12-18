@@ -1,0 +1,44 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:3337 # Nacos 服务器地址
+        namespace: dev
+        group: DEFAULT_GROUP
+      config:
+        server-addr: 127.0.0.1:3337
+        namespace: dev
+        group: DEFAULT_GROUP
+    httpclient:
+      connect-timeout: 30000
+      response-timeout: 1200s
+    gateway:
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+      routes:
+        - id: zwz-demo-service
+          uri: lb://zwz-demo-service
+          predicates:
+            - Path=/zwz-demo-service/**
+        - id: zwz-demo1-service
+          uri: lb://zwz-demo1-service
+          predicates:
+            - Path=/zwz-demo1-service/**
+  application:
+    name: zwz-gateway-service # 应用名称
+
+  config:
+    import: optional:nacos:${spring.application.name}.yaml
+server:
+  port: 3335
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'

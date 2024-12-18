@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:3337 # Nacos 服务器地址
+        namespace: dev
+        group: DEFAULT_GROUP
+        metadata:
+          graytag: zwz
+      config:
+        server-addr: 127.0.0.1:3337
+        namespace: dev
+        group: DEFAULT_GROUP
+  application:
+    name: zwz-demo1-service # 应用名称
+  config:
+    import: optional:nacos:${spring.application.name}.yaml
+server:
+  port: 3338
